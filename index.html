@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rotating Contributors Page</title>
+    <title>AIXUEZHANGLO Project Showcase</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,10 +16,9 @@
         }
 
         body {
-            background: radial-gradient(circle, rgba(29, 29, 39, 1) 0%, rgba(0, 0, 0, 1) 100%);
-            color: #fff;
-            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(120deg, #0d0d0d, #1a1a1a);
             overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .container {
@@ -34,23 +33,21 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            font-size: 100px;
+            font-size: 70px;
             font-weight: bold;
-            background: linear-gradient(to right, #ff0066, #ffcc00, #33ccff);
+            background: linear-gradient(to right, #ffcc00, #ff33cc, #00ccff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            z-index: 10;
         }
 
         .circle {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 800px;
-            height: 800px;
+            width: 900px;
+            height: 900px;
             transform: translate(-50%, -50%);
             border-radius: 50%;
-            border: 6px solid rgba(255, 255, 255, 0.2);
             overflow: hidden;
         }
 
@@ -59,101 +56,75 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            animation: rotateCircle 40s linear infinite;
-        }
-
-        .circle .ring:nth-child(odd) {
-            border: 4px solid rgba(255, 255, 255, 0.5);
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            animation: rotate 20s linear infinite;
         }
 
         .circle .ring:nth-child(even) {
-            border: 4px dashed rgba(255, 255, 255, 0.5);
             animation-direction: reverse;
         }
 
-        @keyframes rotateCircle {
+        .circle .ring:nth-child(odd) {
+            border-style: dashed;
+        }
+
+        @keyframes rotate {
             0% {
-                transform: translate(-50%, -50%) rotate(0deg);
+                transform: rotate(0deg);
             }
-
             100% {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
-        }
-
-        .contributors-container {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            font-size: 24px;
-            font-weight: normal;
-            opacity: 0;
-            animation: fadeInOut 20s linear infinite;
-            z-index: 10;
-        }
-
-        @keyframes fadeInOut {
-            0%, 20% {
-                opacity: 0;
-            }
-            25%, 75% {
-                opacity: 1;
-            }
-            80%, 100% {
-                opacity: 0;
+                transform: rotate(360deg);
             }
         }
 
         .floating-box {
             position: absolute;
-            padding: 10px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
+            border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            animation: float 10s ease-in-out infinite;
-        }
-
-        .floating-box img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
+            animation: float 12s ease-in-out infinite;
+            padding: 15px;
+            display: flex;
+            align-items: center;
         }
 
         .floating-box:nth-child(even) {
             animation-direction: reverse;
         }
 
+        .floating-box img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
         .floating-box p {
-            font-size: 18px;
             color: #fff;
-            margin-top: 10px;
+            font-size: 18px;
         }
 
         @keyframes float {
             0% {
-                transform: translate(0, 0);
+                transform: translateY(0) rotate(0deg);
             }
-
             50% {
-                transform: translate(20px, -20px);
+                transform: translateY(-30px) rotate(3deg);
             }
-
             100% {
-                transform: translate(0, 0);
+                transform: translateY(0) rotate(0deg);
             }
         }
 
         .floating-box:nth-child(1) {
-            top: 10%;
-            left: 10%;
+            top: 5%;
+            left: 20%;
         }
 
         .floating-box:nth-child(2) {
-            bottom: 15%;
-            right: 15%;
+            bottom: 10%;
+            right: 20%;
         }
 
         .floating-box:nth-child(3) {
@@ -162,59 +133,73 @@
         }
 
         .floating-box:nth-child(4) {
-            bottom: 40%;
-            left: 20%;
+            bottom: 25%;
+            left: 15%;
         }
 
         .floating-box:nth-child(5) {
-            top: 50%;
-            left: 60%;
+            top: 60%;
+            left: 70%;
         }
 
-        .project-description {
+        .contributors-container {
             position: absolute;
-            top: 75%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: #ffcc00;
+            bottom: 20px;
+            width: 100%;
             text-align: center;
-            max-width: 800px;
-            line-height: 1.5;
-            z-index: 10;
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffcc00;
+            text-shadow: 0px 0px 5px #000;
         }
 
-        .background-animations {
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        .background-animation {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: 0;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        .background-animations div {
+        .background-animation span {
             position: absolute;
+            display: block;
             width: 20px;
             height: 20px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: moveBackground 15s linear infinite;
+            animation: bounce 20s linear infinite;
+            bottom: -150px;
         }
 
-        @keyframes moveBackground {
+        @keyframes bounce {
             0% {
-                transform: translateY(0) translateX(0);
+                transform: translateY(0);
             }
-
             50% {
-                transform: translateY(1000px) translateX(200px);
+                transform: translateY(-1000px);
             }
-
             100% {
-                transform: translateY(0) translateX(0);
+                transform: translateY(0);
             }
+        }
+
+        .background-animation span:nth-child(odd) {
+            background: rgba(255, 100, 150, 0.3);
+        }
+
+        .background-animation span:nth-child(even) {
+            background: rgba(100, 255, 200, 0.3);
         }
     </style>
 </head>
@@ -225,40 +210,36 @@
         <div class="circle">
             <div class="ring"></div>
             <div class="ring"></div>
-            <div class="ring"></div>
-            <div class="ring"></div>
-            <div class="ring"></div>
-        </div>
-        <div class="project-description">
-            AIXUEZHANGLO: A futuristic project designed to connect brilliant minds, enabling seamless collaboration and innovation.
         </div>
         <div class="floating-box">
-            <img src="https://via.placeholder.com/150" alt="Person A">
-            <p>Person A - Innovator and Developer</p>
+            <img src="https://via.placeholder.com/50" alt="Person Image">
+            <p>Person A - Lead Developer</p>
         </div>
         <div class="floating-box">
-            <p>Person B - Designer</p>
+            <p>"Innovation is the key" - Person B</p>
         </div>
         <div class="floating-box">
-            <img src="https://via.placeholder.com/150" alt="Person C">
-            <p>Person C - Lead Engineer</p>
+            <img src="https://via.placeholder.com/50" alt="Person Image">
+            <p>Person C - UI/UX Designer</p>
         </div>
         <div class="floating-box">
-            <p>Person D - Creative Director</p>
+            <img src="https://via.placeholder.com/50" alt="Person Image">
+            <p>Person D - Project Manager</p>
         </div>
         <div class="floating-box">
-            <img src="https://via.placeholder.com/150" alt="Person E">
-            <p>Person E - Marketing Specialist</p>
+            <p>Person E - QA Specialist</p>
         </div>
         <div class="contributors-container">
             <p id="contributor-name"></p>
         </div>
-        <div class="background-animations">
-            <div style="top: 10%; left: 20%; animation-duration: 12s;"></div>
-            <div style="top: 20%; right: 10%; animation-duration: 18s;"></div>
-            <div style="bottom: 25%; left: 30%; animation-duration: 15s;"></div>
-            <div style="bottom: 35%; right: 25%; animation-duration: 20s;"></div>
-            <div style="top: 50%; left: 40%; animation-duration: 22s;"></div>
+        <div class="background-animation">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
@@ -269,11 +250,6 @@
 
         setInterval(() => {
             contributorNameEl.textContent = contributors[index];
-            contributorNameEl.style.transition = 'opacity 0.5s ease-in-out';
-            contributorNameEl.style.opacity = 0;
-            setTimeout(() => {
-                contributorNameEl.style.opacity = 1;
-            }, 500);
             index = (index + 1) % contributors.length;
         }, 4000);
     </script>
