@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AIXUEZHANGLO - Contributors</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIXUEZHANGLO Project Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,158 +16,170 @@
         }
 
         body {
-            background: linear-gradient(130deg, #002b36, #073642, #586e75);
-            background-size: 600% 600%;
-            animation: backgroundMove 10s ease infinite;
+            background: #000;
+            color: #fff;
             overflow: hidden;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
 
-        @keyframes backgroundMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .container {
+        #main-container {
             position: relative;
             width: 100vw;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .title {
-            font-size: 50px;
-            font-weight: bold;
-            color: #ffffff;
-            text-align: center;
-            animation: titleColorChange 5s infinite;
-        }
-
-        @keyframes titleColorChange {
-            0% {color: #ff0000;}
-            25% {color: #00ff00;}
-            50% {color: #0000ff;}
-            75% {color: #ffff00;}
-            100% {color: #ff0000;}
         }
 
         .circle {
-            position: relative;
+            position: absolute;
+            top: 50%;
+            left: 50%;
             width: 500px;
             height: 500px;
+            margin-top: -250px;
+            margin-left: -250px;
             border-radius: 50%;
-            border: 4px dashed #ffffff;
-            animation: spin 20s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {transform: rotate(0deg);}
-            100% {transform: rotate(360deg);}
-        }
-
-        .floating-item {
-            position: absolute;
-            padding: 5px 10px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            color: #000;
-            font-size: 14px;
-            animation: floatBubble 15s infinite ease-in-out;
-        }
-
-        @keyframes floatBubble {
-            0% {transform: translate(0, 0);}
-            25% {transform: translate(-30px, -60px);}
-            50% {transform: translate(40px, -20px);}
-            75% {transform: translate(-20px, 30px);}
-            100% {transform: translate(0, 0);}
-        }
-
-        .bubble {
-            width: auto;
-            height: auto;
-            animation: changeSize 5s infinite alternate;
-        }
-
-        @keyframes changeSize {
-            0% {transform: scale(1);}
-            100% {transform: scale(1.3);}
-        }
-
-        .contributors {
-            margin-top: 20px;
-            width: 100%;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: contributorFade 10s infinite alternate;
+            animation: rotateCircle 30s linear infinite;
         }
 
-        @keyframes contributorFade {
-            0% {opacity: 0; transform: translateY(50px);}
-            50% {opacity: 1; transform: translateY(0);}
-            100% {opacity: 0; transform: translateY(-50px);}
+        @keyframes rotateCircle {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
-        .contributor-item {
-            background: rgba(0, 0, 0, 0.7);
+        #center-text {
+            position: absolute;
+            text-align: center;
             color: #fff;
-            padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
+            font-size: 50px;
+            font-weight: bold;
+            animation: colorCycle 5s infinite;
+        }
+
+        @keyframes colorCycle {
+            0% {color: #ff0080;}
+            25% {color: #f4c242;}
+            50% {color: #00ff80;}
+            75% {color: #ff4500;}
+            100% {color: #1e90ff;}
+        }
+
+        .bubble-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            color: #fff;
             font-size: 20px;
-            display: inline-block;
+            animation: floatBubble 15s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatBubble {
+            0% {
+                transform: translateY(100vh) scale(0.8);
+            }
+            50% {
+                transform: translateY(50vh) scale(1);
+            }
+            100% {
+                transform: translateY(-100vh) scale(0.8);
+            }
+        }
+
+        #contributor-list {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            animation: contributorEffect 3s infinite alternate;
+        }
+
+        @keyframes contributorEffect {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #ff0080, #ff4500, #1e90ff);
+            background-size: 200% 200%;
+            animation: gradientMovement 10s ease infinite;
+        }
+
+        @keyframes gradientMovement {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="title">AIXUEZHANGLO</div>
+    <div id="main-container">
+        <div class="background-animation"></div>
+
+        <!-- Dynamic Center Text for Project Name -->
+        <div id="center-text">AIXUEZHANGLO</div>
+
+        <!-- Rotating Circle Container -->
         <div class="circle">
-            <div class="floating-item bubble" style="top: 10%; left: 20%;">Contributor 1</div>
-            <div class="floating-item bubble" style="top: 70%; left: 10%;">Contributor 2</div>
-            <div class="floating-item bubble" style="top: 30%; right: 10%;">Contributor 3</div>
-            <div class="floating-item bubble" style="top: 50%; right: 30%;">Contributor 4</div>
-            <div class="floating-item bubble" style="top: 20%; left: 60%;">Contributor 5</div>
+            <div id="project-description">
+                <p>Welcome to the AIXUEZHANGLO project, an advanced, high-tech solution for intelligent data analysis.</p>
+            </div>
         </div>
-        <div class="contributors">
-            <div class="contributor-item">Alice - Project Manager</div>
-            <div class="contributor-item">Bob - Developer</div>
-            <div class="contributor-item">Charlie - Designer</div>
-            <div class="contributor-item">Diana - Tester</div>
-            <div class="contributor-item">Eve - Documentation</div>
+
+        <!-- Contributors Dynamic Section -->
+        <div id="contributor-list">
+            <span class="contributor">John Doe</span>,
+            <span class="contributor">Jane Doe</span>,
+            <span class="contributor">Mark Lee</span>
+        </div>
+
+        <!-- Floating Bubbles -->
+        <div class="bubble-container">
+            <div class="bubble" style="left: 20%; animation-duration: 12s;">Person 1</div>
+            <div class="bubble" style="left: 40%; animation-duration: 10s;">Person 2</div>
+            <div class="bubble" style="left: 60%; animation-duration: 15s;">Person 3</div>
+            <div class="bubble" style="left: 80%; animation-duration: 18s;">Person 4</div>
         </div>
     </div>
 </body>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const contributors = document.querySelector(".contributors");
-        let contributorItems = contributors.children;
-        let index = 0;
-
-        function showNextContributor() {
-            for (let i = 0; i < contributorItems.length; i++) {
-                contributorItems[i].style.display = "none";
-            }
-            contributorItems[index].style.display = "inline-block";
-            contributorItems[index].style.animation = "contributorFade 2s ease";
-            index = (index + 1) % contributorItems.length;
-            setTimeout(showNextContributor, 3000);
-        }
-        showNextContributor();
-    });
-</script>
 
 </html>
