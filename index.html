@@ -14,68 +14,78 @@
         }
 
         body {
-            background: url("https://d1.awsstatic.com/Digital%20Marketing/House/Hero/Artboard-1.8c67493045608335b97122632cdd019707e9f757.jpg") no-repeat center center;
-            background-size: cover;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             font-family: 'Arial', sans-serif;
             height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            position: relative;
+            width: 90vw;
+            height: 90vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
 
-        .container {
-            position: relative;
-            width: 80vw;
-            height: 80vh;
+        .center-area {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            color: #00bcd4;
         }
 
-        .center-text {
-            position: absolute;
-            font-size: 48px;
-            color: #ff00ff;
-            font-weight: bold;
-            text-shadow: 0 0 30px rgba(255, 0, 255, 0.7);
+        .center-area .title {
+            text-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4;
         }
 
         .scroll-box {
             position: absolute;
             bottom: 20px;
             width: 80%;
-            height: 60px;
+            height: 80px;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-            overflow: hidden;
         }
 
-        .scroll-box div {
-            animation: slide 10s infinite linear;
+        .scroll-box .slider {
             display: flex;
-            justify-content: space-around;
-            width: 100%;
+            animation: slide 20s infinite linear;
         }
 
-        .scroll-box div p {
-            font-size: 24px;
-            color: #fff;
+        .scroll-box .slider p {
+            font-size: 28px;
             font-weight: bold;
-            text-shadow: 0 0 10px #fff;
-            margin: 0 30px;
+            color: #ff00ff;
+            margin: 0 40px;
+            text-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
         }
 
         @keyframes slide {
             0% {
                 transform: translateX(0);
             }
-
             100% {
                 transform: translateX(-100%);
             }
@@ -83,19 +93,19 @@
 
         .blur-images {
             position: absolute;
-            right: 10px;
-            bottom: 10px;
+            top: 10px;
+            left: 10px;
             display: flex;
+            flex-direction: column;
             gap: 15px;
-            opacity: 0.9;
         }
 
         .blur-images img {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
             filter: blur(5px);
-            transition: all 0.5s ease;
+            transition: filter 0.5s ease, transform 0.5s ease;
         }
 
         .blur-images img:hover {
@@ -103,68 +113,96 @@
             transform: scale(1.1);
         }
 
-        .animation-effects {
+        .floating-text {
             position: absolute;
             width: 100%;
             height: 100%;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            animation: rotate 15s infinite linear;
+            pointer-events: none;
         }
 
-        .animation-effects span {
+        .floating-text .name {
+            position: absolute;
             font-size: 24px;
-            color: cyan;
+            color: #ffdd57;
             font-weight: bold;
-            background: rgba(0, 255, 255, 0.2);
+            background: rgba(255, 221, 87, 0.3);
             padding: 10px;
             border-radius: 10px;
-            backdrop-filter: blur(3px);
+            animation: float 15s infinite;
+            backdrop-filter: blur(5px);
         }
 
-        @keyframes rotate {
+        @keyframes float {
             0% {
-                transform: rotate(0deg);
+                transform: translateY(0);
             }
-
+            50% {
+                transform: translateY(-20px);
+            }
             100% {
-                transform: rotate(360deg);
+                transform: translateY(0);
             }
+        }
+
+        /* 随机定位每个名字 */
+        .floating-text .name:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .floating-text .name:nth-child(2) {
+            top: 30%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .floating-text .name:nth-child(3) {
+            bottom: 20%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        .floating-text .name:nth-child(4) {
+            bottom: 15%;
+            right: 25%;
+            animation-delay: 9s;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <!-- 中心彩色文字 -->
-        <div class="center-text">Law AI学长</div>
+        <!-- 中心区域 -->
+        <div class="center-area">
+            <div class="title">Law AI学长</div>
+        </div>
 
-        <!-- 动态展示的贡献者框 -->
+        <!-- 滚动贡献者框 -->
         <div class="scroll-box">
-            <div>
+            <div class="slider">
                 <p>张三</p>
                 <p>李四</p>
                 <p>王五</p>
                 <p>赵六</p>
                 <p>钱七</p>
+                <p>孙八</p>
             </div>
-        </div>
-
-        <!-- 漂浮的动画效果 -->
-        <div class="animation-effects">
-            <span>贡献者A</span>
-            <span>贡献者B</span>
-            <span>贡献者C</span>
-            <span>贡献者D</span>
-            <span>贡献者E</span>
         </div>
 
         <!-- 毛玻璃图片 -->
         <div class="blur-images">
-            <img src="https://via.placeholder.com/100" alt="Image 1">
-            <img src="https://via.placeholder.com/100" alt="Image 2">
-            <img src="https://via.placeholder.com/100" alt="Image 3">
+            <img src="https://via.placeholder.com/150" alt="Image 1">
+            <img src="https://via.placeholder.com/150" alt="Image 2">
+            <img src="https://via.placeholder.com/150" alt="Image 3">
+        </div>
+
+        <!-- 漂浮的贡献者名字 -->
+        <div class="floating-text">
+            <div class="name">贡献者A</div>
+            <div class="name">贡献者B</div>
+            <div class="name">贡献者C</div>
+            <div class="name">贡献者D</div>
         </div>
     </div>
 </body>
