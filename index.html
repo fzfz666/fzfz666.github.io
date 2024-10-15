@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AIXUEZHANGLO Project Page</title>
+    <title>Rotating Contributors Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,7 +16,7 @@
         }
 
         body {
-            background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
+            background: radial-gradient(circle, rgba(29, 29, 39, 1) 0%, rgba(0, 0, 0, 1) 100%);
             color: #fff;
             font-family: Arial, Helvetica, sans-serif;
             overflow: hidden;
@@ -36,19 +36,10 @@
             text-align: center;
             font-size: 80px;
             font-weight: bold;
-            background: linear-gradient(to right, #ffcc00, #ff33cc, #33ccff, #ff6699);
+            background: linear-gradient(to right, #ff0066, #ffcc00, #33ccff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            0% {
-                text-shadow: 0 0 5px #ff33cc, 0 0 10px #ff6699, 0 0 15px #ffcc00;
-            }
-            100% {
-                text-shadow: 0 0 20px #ff33cc, 0 0 30px #ff6699, 0 0 40px #ffcc00;
-            }
+            z-index: 10;
         }
 
         .circle {
@@ -61,6 +52,7 @@
             border-radius: 50%;
             border: 4px solid rgba(255, 255, 255, 0.2);
             overflow: hidden;
+            animation: rotateCircle 40s linear infinite;
         }
 
         .circle .ring {
@@ -68,7 +60,6 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            animation: rotate 40s linear infinite;
         }
 
         .circle .ring:nth-child(odd) {
@@ -77,28 +68,29 @@
 
         .circle .ring:nth-child(even) {
             border: 2px dashed rgba(255, 255, 255, 0.3);
-            animation-direction: reverse;
         }
 
-        @keyframes rotate {
+        @keyframes rotateCircle {
             0% {
-                transform: rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
             }
 
             100% {
-                transform: rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
             }
         }
 
         .contributors-container {
             position: absolute;
-            bottom: 20px;
-            width: 100%;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            font-size: 30px;
+            font-size: 24px;
             font-weight: normal;
             opacity: 0;
             animation: fadeInOut 20s linear infinite;
+            z-index: 10;
         }
 
         @keyframes fadeInOut {
@@ -115,15 +107,12 @@
 
         .floating-box {
             position: absolute;
-            min-width: 100px;
-            max-width: 300px;
             padding: 10px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             animation: float 10s ease-in-out infinite;
-            transition: transform 0.5s;
         }
 
         .floating-box:nth-child(even) {
@@ -131,27 +120,22 @@
         }
 
         .floating-box p {
-            padding: 10px;
             font-size: 18px;
             color: #fff;
         }
 
         @keyframes float {
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform: translate(0, 0);
             }
 
             50% {
-                transform: translateY(-30px) rotate(10deg);
+                transform: translate(20px, -20px);
             }
 
             100% {
-                transform: translateY(0) rotate(0deg);
+                transform: translate(0, 0);
             }
-        }
-
-        .floating-box:hover {
-            transform: scale(1.1);
         }
 
         .floating-box:nth-child(1) {
@@ -184,27 +168,44 @@
             top: 70%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 800px;
-            text-align: center;
             font-size: 24px;
-            font-weight: normal;
-            color: #ffffff;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            animation: fadeInOutDesc 30s ease-in-out infinite;
+            color: #ffcc00;
+            text-align: center;
+            max-width: 800px;
+            line-height: 1.5;
+            z-index: 10;
         }
 
-        @keyframes fadeInOutDesc {
-            0%, 40% {
-                opacity: 0;
+        .background-animations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .background-animations div {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: moveBackground 15s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translateY(0) translateX(0);
             }
-            50%, 90% {
-                opacity: 1;
+
+            50% {
+                transform: translateY(1000px) translateX(200px);
             }
+
             100% {
-                opacity: 0;
+                transform: translateY(0) translateX(0);
             }
         }
     </style>
@@ -219,6 +220,9 @@
             <div class="ring"></div>
             <div class="ring"></div>
             <div class="ring"></div>
+        </div>
+        <div class="project-description">
+            AIXUEZHANGLO: A futuristic project designed to connect brilliant minds, enabling seamless collaboration and innovation.
         </div>
         <div class="floating-box">
             <p>Person A</p>
@@ -238,8 +242,12 @@
         <div class="contributors-container">
             <p id="contributor-name"></p>
         </div>
-        <div class="project-description">
-            <p>AIXUEZHANGLO is an innovative project designed to bring advanced technological solutions to the world of education, providing tools to enhance learning experiences through interactive and dynamic content.</p>
+        <div class="background-animations">
+            <div style="top: 10%; left: 20%; animation-duration: 12s;"></div>
+            <div style="top: 20%; right: 10%; animation-duration: 18s;"></div>
+            <div style="bottom: 25%; left: 30%; animation-duration: 15s;"></div>
+            <div style="bottom: 35%; right: 25%; animation-duration: 20s;"></div>
+            <div style="top: 50%; left: 40%; animation-duration: 22s;"></div>
         </div>
     </div>
 
@@ -250,6 +258,11 @@
 
         setInterval(() => {
             contributorNameEl.textContent = contributors[index];
+            contributorNameEl.style.transition = 'opacity 0.5s ease-in-out';
+            contributorNameEl.style.opacity = 0;
+            setTimeout(() => {
+                contributorNameEl.style.opacity = 1;
+            }, 500);
             index = (index + 1) % contributors.length;
         }, 4000);
     </script>
