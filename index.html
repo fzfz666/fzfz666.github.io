@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Law AI学长 - 贡献榜</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url("https://d1.awsstatic.com/Digital%20Marketing/House/Hero/Artboard-1.8c67493045608335b97122632cdd019707e9f757.jpg") no-repeat center center;
+            background-size: cover;
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
             overflow: hidden;
         }
+
         .container {
             position: relative;
             width: 80vw;
@@ -24,115 +31,136 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
         }
-        .center-circle {
+
+        .center-text {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 24px;
+            font-size: 48px;
+            color: #ff00ff;
             font-weight: bold;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-            animation: rotateCircle 10s infinite linear;
+            text-shadow: 0 0 30px rgba(255, 0, 255, 0.7);
         }
-        @keyframes rotateCircle {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .center-circle span {
-            color: cyan;
-        }
+
         .scroll-box {
             position: absolute;
-            top: 20px;
-            width: 200px;
-            height: 50px;
+            bottom: 20px;
+            width: 80%;
+            height: 60px;
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            overflow: hidden;
+            backdrop-filter: blur(10px);
             display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-        }
-        .scroll-box div {
-            display: flex;
-            flex-direction: column;
-            animation: scrollNames 5s infinite linear;
-        }
-        .scroll-box div p {
-            margin: 0;
-            text-align: center;
-            font-size: 18px;
-            line-height: 50px;
-        }
-        @keyframes scrollNames {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100%); }
-        }
-        .floating-names {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: center;
-        }
-        .floating-names span {
-            font-size: 20px;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
             border-radius: 10px;
-            backdrop-filter: blur(5px);
-            margin: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            overflow: hidden;
         }
+
+        .scroll-box div {
+            animation: slide 10s infinite linear;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .scroll-box div p {
+            font-size: 24px;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 0 10px #fff;
+            margin: 0 30px;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
         .blur-images {
             position: absolute;
             right: 10px;
             bottom: 10px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
+            opacity: 0.9;
         }
+
         .blur-images img {
             width: 100px;
             height: 100px;
             border-radius: 10px;
             filter: blur(5px);
+            transition: all 0.5s ease;
+        }
+
+        .blur-images img:hover {
+            filter: blur(0);
+            transform: scale(1.1);
+        }
+
+        .animation-effects {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            animation: rotate 15s infinite linear;
+        }
+
+        .animation-effects span {
+            font-size: 24px;
+            color: cyan;
+            font-weight: bold;
+            background: rgba(0, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            backdrop-filter: blur(3px);
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
+        <!-- 中心彩色文字 -->
+        <div class="center-text">Law AI学长</div>
+
+        <!-- 动态展示的贡献者框 -->
         <div class="scroll-box">
             <div>
                 <p>张三</p>
                 <p>李四</p>
                 <p>王五</p>
                 <p>赵六</p>
+                <p>钱七</p>
             </div>
         </div>
-        <div class="center-circle">
-            <span>Law AI学长</span>
+
+        <!-- 漂浮的动画效果 -->
+        <div class="animation-effects">
+            <span>贡献者A</span>
+            <span>贡献者B</span>
+            <span>贡献者C</span>
+            <span>贡献者D</span>
+            <span>贡献者E</span>
         </div>
-        <div class="floating-names">
-            <span>贡献者1</span>
-            <span>贡献者2</span>
-            <span>贡献者3</span>
-            <span>贡献者4</span>
-            <span>贡献者5</span>
-        </div>
+
+        <!-- 毛玻璃图片 -->
         <div class="blur-images">
             <img src="https://via.placeholder.com/100" alt="Image 1">
             <img src="https://via.placeholder.com/100" alt="Image 2">
@@ -140,4 +168,5 @@
         </div>
     </div>
 </body>
+
 </html>
