@@ -50,6 +50,7 @@
             height: 800px;
             transform: translate(-50%, -50%);
             border-radius: 50%;
+            border: 6px solid rgba(255, 255, 255, 0.2);
             overflow: hidden;
         }
 
@@ -58,32 +59,35 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 6px solid rgba(255, 255, 255, 0.3);
-            animation: rotateRing 40s linear infinite;
+            animation: rotateCircle 40s linear infinite;
+        }
+
+        .circle .ring:nth-child(odd) {
+            border: 4px solid rgba(255, 255, 255, 0.5);
         }
 
         .circle .ring:nth-child(even) {
-            border: 6px dashed rgba(255, 255, 255, 0.5);
+            border: 4px dashed rgba(255, 255, 255, 0.5);
             animation-direction: reverse;
         }
 
-        @keyframes rotateRing {
+        @keyframes rotateCircle {
             0% {
-                transform: rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
             }
 
             100% {
-                transform: rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
             }
         }
 
         .contributors-container {
             position: absolute;
-            top: 65%;
+            top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            font-size: 32px;
+            font-size: 24px;
             font-weight: normal;
             opacity: 0;
             animation: fadeInOut 20s linear infinite;
@@ -115,7 +119,7 @@
         .floating-box img {
             width: 100%;
             height: auto;
-            border-radius: 15px;
+            border-radius: 10px;
         }
 
         .floating-box:nth-child(even) {
@@ -125,6 +129,7 @@
         .floating-box p {
             font-size: 18px;
             color: #fff;
+            margin-top: 10px;
         }
 
         @keyframes float {
@@ -142,33 +147,33 @@
         }
 
         .floating-box:nth-child(1) {
-            top: 5%;
-            left: 15%;
+            top: 10%;
+            left: 10%;
         }
 
         .floating-box:nth-child(2) {
-            bottom: 10%;
-            right: 20%;
+            bottom: 15%;
+            right: 15%;
         }
 
         .floating-box:nth-child(3) {
-            top: 20%;
+            top: 30%;
             right: 25%;
         }
 
         .floating-box:nth-child(4) {
-            bottom: 35%;
-            left: 25%;
+            bottom: 40%;
+            left: 20%;
         }
 
         .floating-box:nth-child(5) {
-            top: 60%;
-            left: 70%;
+            top: 50%;
+            left: 60%;
         }
 
         .project-description {
             position: absolute;
-            top: 70%;
+            top: 75%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 24px;
@@ -228,21 +233,22 @@
             AIXUEZHANGLO: A futuristic project designed to connect brilliant minds, enabling seamless collaboration and innovation.
         </div>
         <div class="floating-box">
-            <p>Person A</p>
+            <img src="https://via.placeholder.com/150" alt="Person A">
+            <p>Person A - Innovator and Developer</p>
         </div>
         <div class="floating-box">
-            <img src="https://via.placeholder.com/150" alt="Person B">
-            <p>Person B</p>
+            <p>Person B - Designer</p>
         </div>
         <div class="floating-box">
-            <p>Person C</p>
+            <img src="https://via.placeholder.com/150" alt="Person C">
+            <p>Person C - Lead Engineer</p>
         </div>
         <div class="floating-box">
-            <img src="https://via.placeholder.com/150" alt="Person D">
-            <p>Person D</p>
+            <p>Person D - Creative Director</p>
         </div>
         <div class="floating-box">
-            <p>Person E</p>
+            <img src="https://via.placeholder.com/150" alt="Person E">
+            <p>Person E - Marketing Specialist</p>
         </div>
         <div class="contributors-container">
             <p id="contributor-name"></p>
