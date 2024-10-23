@@ -83,14 +83,11 @@
             backdrop-filter: blur(10px);
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            animation: float 12s ease-in-out infinite;
             padding: 15px;
             display: flex;
             align-items: center;
-        }
-
-        .floating-box:nth-child(even) {
-            animation-direction: reverse;
+            color: #fff;
+            font-size: 18px;
         }
 
         .floating-box img {
@@ -100,46 +97,12 @@
             margin-right: 10px;
         }
 
-        .floating-box p {
-            color: #fff;
-            font-size: 18px;
+        .floating-box-position {
+            position: absolute;
         }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-30px) rotate(3deg);
-            }
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-        }
-
-        .floating-box:nth-child(1) {
-            top: 5%;
-            left: 20%;
-        }
-
-        .floating-box:nth-child(2) {
-            bottom: 10%;
-            right: 20%;
-        }
-
-        .floating-box:nth-child(3) {
-            top: 30%;
-            right: 25%;
-        }
-
-        .floating-box:nth-child(4) {
-            bottom: 25%;
-            left: 15%;
-        }
-
-        .floating-box:nth-child(5) {
-            top: 60%;
-            left: 70%;
+        .floating-box:nth-child(even) {
+            animation-direction: reverse;
         }
 
         .contributors-container {
@@ -240,24 +203,6 @@
             <div class="ring"></div>
             <div class="ring"></div>
         </div>
-        <div class="floating-box">
-            <img src="https://via.placeholder.com/50" alt="Person Image">
-            <p>Person A - Lead Developer</p>
-        </div>
-        <div class="floating-box">
-            <p>"Innovation is the key" - Person B</p>
-        </div>
-        <div class="floating-box">
-            <img src="https://via.placeholder.com/50" alt="Person Image">
-            <p>Person C - UI/UX Designer</p>
-        </div>
-        <div class="floating-box">
-            <img src="https://via.placeholder.com/50" alt="Person Image">
-            <p>Person D - Project Manager</p>
-        </div>
-        <div class="floating-box">
-            <p>Person E - QA Specialist</p>
-        </div>
         <div class="contributors-container">
             <p id="contributor-name"></p>
         </div>
@@ -271,6 +216,7 @@
             <span></span>
         </div>
         <div class="starry-background" id="starry-background"></div>
+        <div id="floating-boxes-container"></div>
     </div>
 
     <script>
@@ -294,6 +240,35 @@
             star.style.left = Math.random() * 100 + 'vw';
             starryBackground.appendChild(star);
         }
+
+        // Floating boxes positions
+        const floatingBoxData = [
+            { top: '5%', left: '5%' },
+            { top: '10%', right: '10%' },
+            { bottom: '20%', left: '15%' },
+            { bottom: '30%', right: '20%' },
+            { top: '70%', left: '80%' }
+        ];
+
+        const floatingBoxesContainer = document.getElementById('floating-boxes-container');
+        const floatingBoxesContent = [
+            `<img src="https://via.placeholder.com/50" alt="Person Image"><p>Person A - Lead Developer</p>`,
+            `<p>"Innovation is the key" - Person B</p>`,
+            `<img src="https://via.placeholder.com/50" alt="Person Image"><p>Person C - UI/UX Designer</p>`,
+            `<img src="https://via.placeholder.com/50" alt="Person Image"><p>Person D - Project Manager</p>`,
+            `<p>Person E - QA Specialist</p>`
+        ];
+
+        floatingBoxData.forEach((position, idx) => {
+            const floatingBox = document.createElement('div');
+            floatingBox.classList.add('floating-box', 'floating-box-position');
+            if (position.top) floatingBox.style.top = position.top;
+            if (position.bottom) floatingBox.style.bottom = position.bottom;
+            if (position.left) floatingBox.style.left = position.left;
+            if (position.right) floatingBox.style.right = position.right;
+            floatingBox.innerHTML = floatingBoxesContent[idx];
+            floatingBoxesContainer.appendChild(floatingBox);
+        });
     </script>
 </body>
 
