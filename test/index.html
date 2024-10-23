@@ -45,8 +45,8 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 900px;
-            height: 900px;
+            width: 700px;
+            height: 700px;
             transform: translate(-50%, -50%);
             border-radius: 50%;
             overflow: hidden;
@@ -84,27 +84,32 @@
             backdrop-filter: blur(10px);
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 15px;
+            padding: 10px;
             display: flex;
             align-items: center;
             color: #fff;
-            font-size: 18px;
+            font-size: 16px;
             z-index: 1;
+            animation: float 15s ease-in-out infinite;
         }
 
         .floating-box img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             margin-right: 10px;
         }
 
-        .floating-box-position {
-            position: absolute;
-        }
-
-        .floating-box:nth-child(even) {
-            animation-direction: reverse;
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
         }
 
         .contributors-container {
@@ -112,20 +117,11 @@
             bottom: 20px;
             width: 100%;
             text-align: center;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             color: #ffcc00;
             text-shadow: 0px 0px 5px #000;
             z-index: 2;
-        }
-
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
         }
 
         .background-animation {
@@ -205,13 +201,18 @@
             }
 
             .circle {
-                width: 600px;
-                height: 600px;
+                width: 500px;
+                height: 500px;
             }
 
             .floating-box {
-                padding: 10px;
-                font-size: 16px;
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .floating-box img {
+                width: 30px;
+                height: 30px;
             }
 
             .contributors-container {
@@ -271,12 +272,21 @@
             .then(response => response.json())
             .then(data => {
                 const floatingBoxesContainer = document.getElementById('floating-boxes-container');
+                const usedPositions = [];
 
                 data.floatingBoxes.forEach(item => {
+                    let randomTop, randomLeft;
+                    let attempts = 0;
+                    do {
+                        randomTop = Math.random() * 70 + 10 + '%';
+                        randomLeft = Math.random() * 70 + 10 + '%';
+                        attempts++;
+                    } while (isOverlapping(randomTop, randomLeft, usedPositions) && attempts < 10);
+
+                    usedPositions.push({ top: randomTop, left: randomLeft });
+
                     const floatingBox = document.createElement('div');
                     floatingBox.classList.add('floating-box', 'floating-box-position');
-                    const randomTop = Math.random() * 80 + 10 + '%';
-                    const randomLeft = Math.random() * 80 + 10 + '%';
                     floatingBox.style.top = randomTop;
                     floatingBox.style.left = randomLeft;
                     floatingBox.innerHTML = item.content;
@@ -284,6 +294,16 @@
                 });
             })
             .catch(error => console.error('Error loading floating box data:', error));
+
+        function isOverlapping(top, left, positions) {
+            const topValue = parseFloat(top);
+            const leftValue = parseFloat(left);
+            return positions.some(pos => {
+                const existingTop = parseFloat(pos.top);
+                const existingLeft = parseFloat(pos.left);
+                return Math.abs(topValue - existingTop) < 10 && Math.abs(leftValue - existingLeft) < 10;
+            });
+        }
     </script>
 </body>
 
