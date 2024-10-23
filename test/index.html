@@ -29,15 +29,16 @@
 
         .center-content {
             position: absolute;
-            top: 50%;
+            top: 10%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             text-align: center;
             font-size: 70px;
             font-weight: bold;
             background: linear-gradient(to right, #ffcc00, #ff33cc, #00ccff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            z-index: 2;
         }
 
         .circle {
@@ -88,6 +89,7 @@
             align-items: center;
             color: #fff;
             font-size: 18px;
+            z-index: 1;
         }
 
         .floating-box img {
@@ -114,6 +116,7 @@
             font-weight: bold;
             color: #ffcc00;
             text-shadow: 0px 0px 5px #000;
+            z-index: 2;
         }
 
         @keyframes typing {
@@ -241,34 +244,24 @@
             starryBackground.appendChild(star);
         }
 
-        // Floating boxes positions
-        const floatingBoxData = [
-            { top: '50%', left: '5%' },
-            { top: '40%', right: '10%' },
-            { bottom: '30%', left: '15%' },
-            { bottom: '30%', right: '20%' },
-            { top: '70%', left: '80%' }
-        ];
+        // Fetch floating box data from an external JSON file and assign random positions
+        fetch('floatingBoxesData.json')
+            .then(response => response.json())
+            .then(data => {
+                const floatingBoxesContainer = document.getElementById('floating-boxes-container');
 
-        const floatingBoxesContainer = document.getElementById('floating-boxes-container');
-        const floatingBoxesContent = [
-            `<img src="https://via.placeholder.com/50" alt="Person Image"><p>Person A - Lead Developer</p>`,
-            `<p>"Innovation is the key" - Person B</p>`,
-            `<img src="https://via.placeholder.com/50" alt="Person Image"><p>Person C - UI/UX Designer</p>`,
-            `<img src="https://via.placeholder.com/50" alt="Person Image"><p>Person D - Project Manager</p>`,
-            `<p>Person E - QA Specialist</p>`
-        ];
-
-        floatingBoxData.forEach((position, idx) => {
-            const floatingBox = document.createElement('div');
-            floatingBox.classList.add('floating-box', 'floating-box-position');
-            if (position.top) floatingBox.style.top = position.top;
-            if (position.bottom) floatingBox.style.bottom = position.bottom;
-            if (position.left) floatingBox.style.left = position.left;
-            if (position.right) floatingBox.style.right = position.right;
-            floatingBox.innerHTML = floatingBoxesContent[idx];
-            floatingBoxesContainer.appendChild(floatingBox);
-        });
+                data.floatingBoxes.forEach(item => {
+                    const floatingBox = document.createElement('div');
+                    floatingBox.classList.add('floating-box', 'floating-box-position');
+                    const randomTop = Math.random() * 80 + 10 + '%';
+                    const randomLeft = Math.random() * 80 + 10 + '%';
+                    floatingBox.style.top = randomTop;
+                    floatingBox.style.left = randomLeft;
+                    floatingBox.innerHTML = item.content;
+                    floatingBoxesContainer.appendChild(floatingBox);
+                });
+            })
+            .catch(error => console.error('Error loading floating box data:', error));
     </script>
 </body>
 
