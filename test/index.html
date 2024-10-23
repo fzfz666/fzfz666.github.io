@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIXUEZHANGLO Project Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(120deg, #0d0d0d, #1a1a1a);
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .center-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 70px;
+            font-weight: bold;
+            background: linear-gradient(to right, #ffcc00, #ff33cc, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 900px;
+            height: 900px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .circle .ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            animation: rotate 20s linear infinite;
+        }
+
+        .circle .ring:nth-child(even) {
+            animation-direction: reverse;
+        }
+
+        .circle .ring:nth-child(odd) {
+            border-style: dashed;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .floating-box {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: float 12s ease-in-out infinite;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .floating-box:nth-child(even) {
+            animation-direction: reverse;
+        }
+
+        .floating-box img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .floating-box p {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(3deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        .floating-box:nth-child(1) {
+            top: 5%;
+            left: 20%;
+        }
+
+        .floating-box:nth-child(2) {
+            bottom: 10%;
+            right: 20%;
+        }
+
+        .floating-box:nth-child(3) {
+            top: 30%;
+            right: 25%;
+        }
+
+        .floating-box:nth-child(4) {
+            bottom: 25%;
+            left: 15%;
+        }
+
+        .floating-box:nth-child(5) {
+            top: 60%;
+            left: 70%;
+        }
+
+        .contributors-container {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffcc00;
+            text-shadow: 0px 0px 5px #000;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .background-animation span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: bounce 20s linear infinite;
+            bottom: -150px;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-1000px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .background-animation span:nth-child(odd) {
+            background: rgba(255, 100, 150, 0.3);
+        }
+
+        .background-animation span:nth-child(even) {
+            background: rgba(100, 255, 200, 0.3);
+        }
+
+        /* Starry Background */
+        .starry-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            opacity: 0.8;
+            animation: twinkling 10s infinite alternate;
+        }
+
+        @keyframes twinkling {
+            0% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="center-content">AIXUEZHANGLO</div>
+        <div class="circle">
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+        <div class="floating-box">
+            <img src="https://via.placeholder.com/50" alt="Person Image">
+            <p>Person A - Lead Developer</p>
+        </div>
+        <div class="floating-box">
+            <p>"Innovation is the key" - Person B</p>
+        </div>
+        <div class="floating-box">
+            <img src="https://via.placeholder.com/50" alt="Person Image">
+            <p>Person C - UI/UX Designer</p>
+        </div>
+        <div class="floating-box">
+            <img src="https://via.placeholder.com/50" alt="Person Image">
+            <p>Person D - Project Manager</p>
+        </div>
+        <div class="floating-box">
+            <p>Person E - QA Specialist</p>
+        </div>
+        <div class="contributors-container">
+            <p id="contributor-name"></p>
+        </div>
+        <div class="background-animation">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="starry-background" id="starry-background"></div>
+    </div>
+
+    <script>
+        const contributors = ["John Doe", "Jane Smith", "Chris Johnson", "Emily White", "Michael Brown"];
+        const contributorNameEl = document.getElementById("contributor-name");
+        let index = 0;
+
+        setInterval(() => {
+            contributorNameEl.textContent = contributors[index];
+            index = (index + 1) % contributors.length;
+        }, 4000);
+
+        // Adding stars to the background
+        const starryBackground = document.getElementById('starry-background');
+        const numberOfStars = 150;
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            starryBackground.appendChild(star);
+        }
+    </script>
+</body>
+
+</html>
