@@ -198,7 +198,7 @@
         @media only screen and (max-width: 768px) {
             .center-content {
                 width: 90vw;  /* 增加宽度以占据更大空间 */
-                font-size: 40px;
+                font-size: 42px;
                 top: 40%;
                 white-space: nowrap; /* 禁止换行 */
             }
@@ -277,25 +277,18 @@
             .then(data => {
                 const floatingBoxesContainer = document.getElementById('floating-boxes-container');
                 const usedPositions = [];
-        
+
                 data.floatingBoxes.forEach(item => {
                     let randomTop, randomLeft;
                     let attempts = 0;
                     do {
-                        randomTop = Math.random() * 100;
-                        randomLeft = Math.random() * 100;
+                        randomTop = Math.random() * 70 + 10 + '%';
+                        randomLeft = Math.random() * 70 + 10 + '%';
                         attempts++;
-                    } while (
-                        (randomTop > 35 && randomTop < 65) &&  // 避开垂直方向的中央区域
-                        (randomLeft > 35 && randomLeft < 65) &&  // 避开水平方向的中央区域
-                        attempts < 10
-                    );
-        
-                    randomTop += '%';
-                    randomLeft += '%';
-        
+                    } while (isOverlapping(randomTop, randomLeft, usedPositions) && attempts < 10);
+
                     usedPositions.push({ top: randomTop, left: randomLeft });
-        
+
                     const floatingBox = document.createElement('div');
                     floatingBox.classList.add('floating-box', 'floating-box-position');
                     floatingBox.style.top = randomTop;
