@@ -30,7 +30,7 @@
 
         .center-content {
             position: absolute;
-            top: 40%;
+            top: 38%;
             left: 50.5%;
             transform: translateX(-50%);
             text-align: center;
@@ -282,23 +282,25 @@
                     let randomTop, randomLeft;
                     let attempts = 0;
                     do {
-                        randomTop = Math.random() * 70 + 10 + '%';
-                        randomLeft = Math.random() * 70 + 10 + '%';
-                        // 避开中心区域的 30% 范围
+                        randomTop = Math.random() * 70 + 10; // 保持生成在 10% 到 80% 之间，随机生成浮动框位置
+                        randomLeft = Math.random() * 70 + 10;
+                
+                        // 避开中心区域的 30% 范围（垂直和水平方向）
                         if (randomTop > 35 && randomTop < 65) {
                             randomTop = randomTop < 50 ? randomTop - 15 : randomTop + 15;
                         }
                         if (randomLeft > 35 && randomLeft < 65) {
                             randomLeft = randomLeft < 50 ? randomLeft - 15 : randomLeft + 15;
                         }
-    
-                        randomTop += '%';
-                        randomLeft += '%';
+                
                         attempts++;
-                    } while (isOverlapping(randomTop, randomLeft, usedPositions) && attempts < 10);
-
+                    } while (isOverlapping(`${randomTop}%`, `${randomLeft}%`, usedPositions) && attempts < 10);
+                
+                    randomTop += '%';
+                    randomLeft += '%';
+                
                     usedPositions.push({ top: randomTop, left: randomLeft });
-
+                
                     const floatingBox = document.createElement('div');
                     floatingBox.classList.add('floating-box', 'floating-box-position');
                     floatingBox.style.top = randomTop;
