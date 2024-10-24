@@ -25,7 +25,7 @@
   ]
 }
 
-// <p>Person A - Lead Developer</p>是说这是一整段
+# <p>Person A - Lead Developer</p>是说这是一整段
 alt=\"Person Image\  是图片加载不出来就用这个默认的图片
 <img src=\"https://via.placeholder.com/50\"    或写为
 <img src="./xxxxxx.jpg"
