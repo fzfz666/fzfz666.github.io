@@ -1,26 +1,31 @@
 {
   "floatingBoxes": [
     {
-      "content": "<img src=\"./fff.jpg\" alt=\"Person Image\"><p>小方方 - 牛 + 6</p>"
+      "content": "<img src=\"https://fzfz666.github.io/image/fff.jpg\" alt=\"Person Image\"><p>小方方 - 牛 + 6</p>"
     },
     {
-      "content": "<img src=\"./liuziyang.jpg\" alt=\"Person Image\"><p>23刘梓阳 - \"接口6的一批\"</p>"
+      "content": "<img src=\"https://fzfz666.github.io/image/liuziyang.jpg\" alt=\"Person Image\"><p>贡献者23刘梓阳 - \"接口6的一批\"</p>"
     },
     {
-      "content": "<img src=\"./kuangzihao.jpg\" alt=\"Person Image\"><p>23邝梓濠 - 宇宙最好</p>"
+      "content": "<img src=\"https://fzfz666.github.io/image/kuangzihao.jpg\" alt=\"Person Image\"><p>贡献者23邝梓濠 - 宇宙最好</p>"
     },
     {
-      "content": "<img src=\"./wangchao.jpg\" alt=\"Person Image\"><p>23王超(笔名) —— 牛牛牛</p>"
+      "content": "<img src=\"https://fzfz666.github.io/image/wangchao.jpg\" alt=\"Person Image\"><p>贡献者23雷雨轩 —— 牛牛牛</p>"
     },
     {
-      "content": "<img src=\"./yangxiakai.jpg\" alt=\"Person Image\"><p>22杨夏凯 —— 找bug王</p>"
+      "content": "<img src=\"https://fzfz666.github.io/image/yangxiakai.jpg\" alt=\"Person Image\"><p>贡献者22杨夏凯 —— 找bug王</p>"
     },
     {
-      "content": "<img src=\"./linkun.jpg\" alt=\"Person Image\"><p>23林昆 —— 参与后端编写</p>"
+      "content": "<img src=\"https://fzfz666.github.io/image/linkun.jpg\" alt=\"Person Image\"><p>贡献者23林昆 —— 参与后端编写</p>"
     },
     {
       "content": "<p>快加入我们一起为AI学姐/学长做贡献吧！</p>"
-    }
-    
+    },
+        {
+      "content": "<p>请帮我预约五八工房明天下午3:00-4:00!</p>"
+    },
+        {
+      "content": "<p>我明天上啥课？放不放假？</p>"
+    },
   ]
 }
