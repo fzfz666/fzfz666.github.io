@@ -1,0 +1,19 @@
+{
+  "floatingBoxes": [
+    {
+      "content": "<img src=\"https://via.placeholder.com/50\" alt=\"Person Image\"><p>Person A - Lead Developer</p>"
+    },
+    {
+      "content": "<p>\"Innovation is the key\" - Person B</p>"
+    },
+    {
+      "content": "<img src=\"https://via.placeholder.com/50\" alt=\"Person Image\"><p>Person C - UI/UX Designer</p>"
+    },
+    {
+      "content": "<img src=\"https://via.placeholder.com/50\" alt=\"Person Image\"><p>Person D - Project Manager</p>"
+    },
+    {
+      "content": "<p>Person E - QA Specialist</p>"
+    }
+  ]
+}
