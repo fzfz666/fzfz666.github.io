@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>咯咯咯AI - 开发者贡献榜（中国海洋大学）</title>
+    <title>咯咯咯AI - 开发者贡献榜（海大）</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,7 +30,7 @@
 
         .center-content {
             position: absolute;
-            top: 40%;
+            top: 38%;
             left: 50.5%;
             transform: translateX(-50%);
             text-align: center;
@@ -197,8 +197,10 @@
         /* Mobile Styles */
         @media only screen and (max-width: 768px) {
             .center-content {
+                width: 90vw;  /* 增加宽度以占据更大空间 */
                 font-size: 40px;
-                top: 8%;
+                top: 40%;
+                white-space: nowrap; /* 禁止换行 */
             }
 
             .circle {
@@ -208,17 +210,17 @@
 
             .floating-box {
                 padding: 8px;
-                font-size: 14px;
+                font-size: 10px;
             }
 
             .floating-box img {
-                width: 30px;
-                height: 30px;
+                width: 23px;
+                height: 23px;
             }
 
             .contributors-container {
 /*                 这是底部在手机端的大小 */
-                font-size: 45px;
+                font-size: 35px;
             }
         }
     </style>
@@ -275,18 +277,25 @@
             .then(data => {
                 const floatingBoxesContainer = document.getElementById('floating-boxes-container');
                 const usedPositions = [];
-
+        
                 data.floatingBoxes.forEach(item => {
                     let randomTop, randomLeft;
                     let attempts = 0;
                     do {
-                        randomTop = Math.random() * 70 + 10 + '%';
-                        randomLeft = Math.random() * 70 + 10 + '%';
+                        randomTop = Math.random() * 100;
+                        randomLeft = Math.random() * 100;
                         attempts++;
-                    } while (isOverlapping(randomTop, randomLeft, usedPositions) && attempts < 10);
-
+                    } while (
+                        (randomTop > 35 && randomTop < 65) &&  // 避开垂直方向的中央区域
+                        (randomLeft > 35 && randomLeft < 65) &&  // 避开水平方向的中央区域
+                        attempts < 10
+                    );
+        
+                    randomTop += '%';
+                    randomLeft += '%';
+        
                     usedPositions.push({ top: randomTop, left: randomLeft });
-
+        
                     const floatingBox = document.createElement('div');
                     floatingBox.classList.add('floating-box', 'floating-box-position');
                     floatingBox.style.top = randomTop;
@@ -294,7 +303,8 @@
                     floatingBox.innerHTML = item.content;
                     floatingBoxesContainer.appendChild(floatingBox);
                 });
-            })
+            });
+
             .catch(error => console.error('Error loading floating box data:', error));
 
         function isOverlapping(top, left, positions) {
