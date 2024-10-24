@@ -30,7 +30,7 @@
 
         .center-content {
             position: absolute;
-            top: 38%;
+            top: 40%;
             left: 50.5%;
             transform: translateX(-50%);
             text-align: center;
@@ -199,7 +199,7 @@
             .center-content {
                 width: 90vw;  /* 增加宽度以占据更大空间 */
                 font-size: 42px;
-                top: 40%;
+                top: 41%;
                 white-space: nowrap; /* 禁止换行 */
             }
 
@@ -220,7 +220,7 @@
 
             .contributors-container {
 /*                 这是底部在手机端的大小 */
-                font-size: 35px;
+                font-size: 25px;
             }
         }
     </style>
@@ -272,7 +272,7 @@
         }
 
         // Fetch floating box data from an external JSON file and assign random positions
-        fetch('floatingBoxesData.json')
+        fetch('/image/contributor.json')
             .then(response => response.json())
             .then(data => {
                 const floatingBoxesContainer = document.getElementById('floating-boxes-container');
