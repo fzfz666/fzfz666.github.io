@@ -272,7 +272,7 @@
         }
 
         // Fetch floating box data from an external JSON file and assign random positions
-        fetch('/image/contributor.json')
+        fetch('floatingBoxesData.json')
             .then(response => response.json())
             .then(data => {
                 const floatingBoxesContainer = document.getElementById('floating-boxes-container');
@@ -284,6 +284,16 @@
                     do {
                         randomTop = Math.random() * 70 + 10 + '%';
                         randomLeft = Math.random() * 70 + 10 + '%';
+                        // 避开中心区域的 30% 范围
+                        if (randomTop > 35 && randomTop < 65) {
+                            randomTop = randomTop < 50 ? randomTop - 15 : randomTop + 15;
+                        }
+                        if (randomLeft > 35 && randomLeft < 65) {
+                            randomLeft = randomLeft < 50 ? randomLeft - 15 : randomLeft + 15;
+                        }
+    
+                        randomTop += '%';
+                        randomLeft += '%';
                         attempts++;
                     } while (isOverlapping(randomTop, randomLeft, usedPositions) && attempts < 10);
 
@@ -296,8 +306,7 @@
                     floatingBox.innerHTML = item.content;
                     floatingBoxesContainer.appendChild(floatingBox);
                 });
-            });
-
+            })
             .catch(error => console.error('Error loading floating box data:', error));
 
         function isOverlapping(top, left, positions) {
